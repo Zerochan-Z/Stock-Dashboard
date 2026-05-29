@@ -3,7 +3,7 @@ Week 3 Python Learning
 
 ---
 
-### Line 1: `returns = data.pct_change().dropna()`
+### `returns = data.pct_change().dropna()`
 
 | Part | What it does |
 |------|--------------|
@@ -14,7 +14,7 @@ Week 3 Python Learning
 
 ---
 
-### Line 2: `correlation = returns['AAPL'].corr(returns['TSLA'])`
+### `correlation = returns['AAPL'].corr(returns['TSLA'])`
 
 | Part | What it does |
 |------|--------------|
@@ -35,7 +35,41 @@ Week 3 Python Learning
 | `-0.5` | Weak negative relationship | Slightly opposite moves |
 | `-1.0` | Perfect inverse | One up = other down |
 
+
 ---
+
+## Visual Example
+
+After `reset_index()`, your DataFrame looks like this:
+
+| (index) | Date       | Close  | Open   |
+|---------|------------|--------|--------|
+| 0       | 2025-01-02 | 185.90 | 185.50 |
+| 1       | 2025-01-03 | 184.20 | 184.00 |
+| 2       | 2025-01-04 | 183.50 | 183.00 |
+
+| Access method | Code | Returns |
+|---------------|------|---------|
+| `.loc` by label | `data.loc[0, 'Close']` | `185.90` |
+| `.loc` by label | `data.loc[1, 'Date']` | `2025-01-03` |
+| `.iloc` by position | `data.iloc[0, 1]` | `185.90` (row 0, column 1) |
+| `.iloc` by position | `data.iloc[1, 0]` | `2025-01-03` (row 1, column 0) |
+
+---
+
+## Why Both Exist?
+
+| Use `.loc` when... | Use `.iloc` when... |
+|--------------------|---------------------|
+| Your index has meaningful labels (dates, names, IDs) | You don't care about labels, just row position |
+| You know the row name (e.g., `'2025-01-02'`) | You know the row number (0,1,2...) |
+| You want clear, readable code | You need speed (`.iloc` is slightly faster) |
+
+---
+
+## One Sentence Summary
+
+**`.loc` accesses by row **label** (name), `.iloc` accesses by **position** (0,1,2...) – in your code, both would work the same because your labels are 0,1,2...**
 
 ### One Sentence Summary
 
