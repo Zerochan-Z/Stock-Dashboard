@@ -36,18 +36,6 @@ for i in range(4,len(data)):
 
     data.loc[i, 'SMA'] = SMA_5
 
-'''
-Using the SMA you calculated in Task 2, find days where:
-
-Yesterday's Close < Yesterday's SMA
-
-Today's Close > Today's SMA
-
-Print out the dates where this happens.
-
-Hint: Use .shift(1) to compare with previous day.
-
-'''
 
 for i in range(5,len(data)):
     prev_close = data.loc[i - 1, 'Close']
